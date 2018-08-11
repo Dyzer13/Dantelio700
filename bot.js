@@ -32,7 +32,7 @@ client.user.setGame(`--SMplay`,"https://www.twitch.tv/clo_wiin")
   console.log(' Bot Is Online')
   console.log('╚[════════════]╝')
   console.log('')
-  console.log('')
+  console.log('') 
 });
 
 
