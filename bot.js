@@ -282,7 +282,24 @@ client.on("message", (message) => {
             }
 });
 
+client.on('message', message => {
+    if (message.content.startsWith("$help")) {
+let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **$play** ' ,' ** if you want start your music do $play <link music or name >** ')
+.addField('     **$stop**  ' ,' ** if you want stop music do $stop ** ')
+.addField('     **$skip** ' , '** if you want skip music do $skip**') 
+.addField('     **$vol** ' , '** to edit volume bot do $vol**') 
+.addField('     **$pause** ' , '** to pause music do $pause **') 
+.addField('     **$unpause** ' , '** if you unpause music do $unpause**') 
 
+
+
+
+.setColor('#24efbd')
+message.channel.sendEmbed(embed);
+}
+});
 
 
 client.login(process.env.BOT_TOKEN);
