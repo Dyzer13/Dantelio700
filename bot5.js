@@ -14,5 +14,5 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 });
 
 client.login(process.env.BOT_TOKEN5);
-client.login(process.env.Spam);
+client.login(process.env.BOT_SS);
 
