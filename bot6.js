@@ -6,7 +6,6 @@ client.on("message", (message) => {
         if (message.author.id === client.user.id) return;
         let yumz = new Discord.RichEmbed()
                     .setTimestamp()
-                    .setTitle("Direct Message To Michou")
                     .addField(`Sent By:`, `<@${message.author.id}>`)
                     .setThumbnail(message.author.displayAvatarURL)
                     .addField(`Message: `, `\n\n\`\`\`${message.content}\`\`\``)
