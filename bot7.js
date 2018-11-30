@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "S";
-
+client.on('ready', () => {
+    client.channels.get("518159740971253779").join(); 
+    });
 
 
 client.on('message', message => {
