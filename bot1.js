@@ -7,11 +7,10 @@ const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '$';
+const prefix = '2';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$play`,"https://www.twitch.tv/Anime & Games")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -103,7 +102,6 @@ client.on('message', function(message) {
 					let play_info = new Discord.RichEmbed()
 						.setAuthor("تم وضعها في قائمه ", message.author.avatarURL)
 						.setDescription(`**${videoInfo.title}**`)
-						.setColor("RANDOM")
 						.setFooter('تم تشغيل بواسطه:' + message.author.tag)
 						.setImage(videoInfo.thumbnailUrl)
 					//.setDescription('?')
@@ -126,7 +124,6 @@ client.on('message', function(message) {
 					let play_info = new Discord.RichEmbed()
 						.setAuthor(`تم تشغيل`, message.author.avatarURL)
 						.setDescription(`**${videoInfo.title}**`)
-						.setColor("RANDOM")
 						.setFooter('تم تشغيل بواسطه: ' + message.author.tag)
 						.setThumbnail(videoInfo.thumbnailUrl)
 					//.setDescription('?')
@@ -183,7 +180,6 @@ client.on('message', function(message) {
 				let playing_now_info = new Discord.RichEmbed()
 					.setAuthor(client.user.username, client.user.avatarURL)
 					.setDescription(`**${videoInfo.title}**`)
-					.setColor("RANDOM")
 					.setFooter('Requested By:' + message.author.tag)
 					.setImage(videoInfo.thumbnailUrl)
 				message.channel.sendEmbed(playing_now_info);
@@ -282,23 +278,63 @@ client.on("message", (message) => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("$help")) {
-let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **$play** ' ,' ** if you want start your music do $play <link music or name >** ')
-.addField('     **$stop**  ' ,' ** if you want stop music do $stop ** ')
-.addField('     **$skip** ' , '** if you want skip music do $skip**') 
-.addField('     **$vol** ' , '** to edit volume bot do $vol**') 
-.addField('     **$pause** ' , '** to pause music do $pause **') 
-.addField('     **$unpause** ' , '** if you unpause music do $unpause**') 
+    let argresult = message.content.split(` `).slice(1).join(' ');
+    if (message.content.startsWith(prefix + 'setStreaming')) {
+      if (!devs.includes(message.author.id)) return message.channel.send("<@461766920400535552> only this guy can do restart the bot so don't try again :wink:.");
+      message.delete();
+      client.user.setGame(argresult, 'https://twitch.tv/DynastyShop');
+
+    } else if(message.content.startsWith(prefix + 'setWatching')) {
+        client.user.setActivity(argresult,{type: 'WATCHING'});
+
+      } else if(message.content.startsWith(prefix + 'setListening')) {
+        client.user.setActivity(argresult,{type: 'LISTENING'});
+
+      } else if(message.content.startsWith(prefix + 'setPlaying')) {
+        client.user.setActivity(argresult,{type: 'PLAYING'});
+
+      } else if(message.content.startsWith(prefix + 'setName')) {
+        client.user.setUsername(argresult);
+
+      } else if(message.content.startsWith(prefix + 'setAvatar')) {
+        client.user.setAvatar(argresult);
 
 
+      } else if(message.content.startsWith(prefix + 'setStatus')) {
+        if(!argresult) return message.channel.send('`online`, `DND(Do not Distrub),` `idle`, `invisible(Offline)` :notes: أختر أحد الحالات');
+        client.user.setStatus(argresult);
 
 
-.setColor('#24efbd')
-message.channel.sendEmbed(embed);
-}
+    }
+
+  });
+
+
+client.on('message', message => {
+  var helplist = `**${client.user.tag}** commands:
+  ` + '`' + prefix + 'about` - **شرح معلومات البوت**' + `
+  ` + '`' + prefix + 'ping` - **سرعه البوت**' + `
+  :notes: __**أوامر الموسيقى**__` + `
+  ` + '`' + prefix + 'play` - **لتشغيل الموسيقى**' + `
+  ` + '`' + prefix + 'skip` - **لتصويت تخطي الأغنية**' + `
+  ` + '`' + prefix + 'stop` - **لأيقاف الأغنية وخروج البوت من الروم**' + `
+  ` + '`' + prefix + 'pause` - **لأيقاف الاغنية بشكل مؤقت**' + `
+  ` + '`' + prefix + 'resume` - **لأكمال تشغيل الأغنية المؤقة مؤقتاً**' + `
+  ` + '`' + prefix + 'volume` - **لتغيير مستوى الصوت**' + `
+  ` + '`' + prefix + 'queue` - **لمشاهدة طابور الموسيقى**' + `
+  ` + '`' + prefix + 'repeat` - **لأعادة تشغيل الاغنية كل ما تنتهي مباشرتاً**' + `
+  :watch: __**أوامر صاحب البوت**__` + `
+  ` + '`' + prefix + 'setStreaming` - **لجعل وضع البوت ستريمنق**' + `
+  ` + '`' + prefix + 'setWatching` - **لجعل وضع البوت واتشنق**' + `
+  ` + '`' + prefix + 'setListening` - **لجعل وضع البوت ليستننق**' + `
+  ` + '`' + prefix + 'setName` - **لتغيير أسم البوت**' + `
+  ` + '`' + prefix + 'setAvatar` - **لتغيير صورة البوت**' + `
+  ` + '`' + prefix + 'setStatus` - **لتغيير حالة البوت**' + `
+** Michou Dev**`
+  if(message.content === prefix + 'help') {
+    message.author.send(helplist);
+  }
 });
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN2);
