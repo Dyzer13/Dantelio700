@@ -1,4 +1,8 @@
 const client = new Discord.Client();
+const client = new Discord.Client();
+client.on('ready', () => {
+    client.channels.get("518159740971253779").join(); 
+    });
 
 client.on('message',async message => {
   if(message.author.bot || message.channel.type === '*bc') return;
