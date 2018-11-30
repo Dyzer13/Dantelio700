@@ -8,7 +8,7 @@ const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '2';
+const prefix = '3';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -103,7 +103,6 @@ client.on('message', function(message) {
 					let play_info = new Discord.RichEmbed()
 						.setAuthor("تم وضعها في قائمه ", message.author.avatarURL)
 						.setDescription(`**${videoInfo.title}**`)
-						.setColor("RANDOM")
 						.setFooter('تم تشغيل بواسطه:' + message.author.tag)
 						.setImage(videoInfo.thumbnailUrl)
 					//.setDescription('?')
@@ -126,7 +125,6 @@ client.on('message', function(message) {
 					let play_info = new Discord.RichEmbed()
 						.setAuthor(`تم تشغيل`, message.author.avatarURL)
 						.setDescription(`**${videoInfo.title}**`)
-						.setColor("RANDOM")
 						.setFooter('تم تشغيل بواسطه: ' + message.author.tag)
 						.setThumbnail(videoInfo.thumbnailUrl)
 					//.setDescription('?')
@@ -183,7 +181,6 @@ client.on('message', function(message) {
 				let playing_now_info = new Discord.RichEmbed()
 					.setAuthor(client.user.username, client.user.avatarURL)
 					.setDescription(`**${videoInfo.title}**`)
-					.setColor("RANDOM")
 					.setFooter('Requested By:' + message.author.tag)
 					.setImage(videoInfo.thumbnailUrl)
 				message.channel.sendEmbed(playing_now_info);
@@ -341,4 +338,5 @@ client.on('message', message => {
 });
 
 
-client.login(process.env.BOT_TOKEN2);
+client.login(process.env.BOT_TOKEN3);
+
