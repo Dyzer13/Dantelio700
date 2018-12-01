@@ -56,7 +56,6 @@ var download = function(uri, filename, callback) {
 		request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
 	});
 };
-const developers = ['515474180603641866'];
 client.on('message', function(message) {
 	const member = message.member;
 	const mess = message.content.toLowerCase();
