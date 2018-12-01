@@ -2,6 +2,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '%';
 
+client.on('ready', () => {
+    client.channels.get("518358202447036426").join(); 
+    });
+
 
 client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '.NotActive'));
