@@ -46,7 +46,6 @@ var now_playing = [];
 \\\\\\\\\\\\\\\\\\\\\\\\/////////////////////////
 \\\\\\\\\\\\\\\\\\\\\\\\/////////////////////////
 */
-const developers = ['515474180603641866'];
 client.on('ready', () => {});
 console.log("Logged")
 var download = function(uri, filename, callback) {
@@ -240,7 +239,6 @@ client.on('message', function(message) {
 	}
 });
 
-const developers = ['515474180603641866'];
 client.on("message", (message) => {
             if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
@@ -255,7 +253,6 @@ client.on("message", (message) => {
                 client.users.get("471788143637430273").send(yumz)
             }
 });
-const developers = ['515474180603641866'];
 client.on('message', message => {
     let argresult = message.content.split(` `).slice(1).join(' ');
     if (message.content.startsWith(prefix + 'setStreaming')) {
@@ -288,7 +285,6 @@ client.on('message', message => {
 
   });
 
-const developers = ['515474180603641866'];
 client.on('message', message => {
   var helplist = `**${client.user.tag}** commands:
   ` + '`' + prefix + 'about` - **شرح معلومات البوت**' + `
