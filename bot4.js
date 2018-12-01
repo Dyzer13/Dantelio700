@@ -35,8 +35,9 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-    client.channels.get("518159740971253779").join(); 
+    client.channels.get("518358514247139333").join(); 
     });
+
 
 
 
