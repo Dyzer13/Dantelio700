@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = '%';
 
 client.on('ready', () => {
-    client.channels.get("518358202447036426").join(); 
+    client.channels.get("518357859189260309").join(); 
     });
 
 
